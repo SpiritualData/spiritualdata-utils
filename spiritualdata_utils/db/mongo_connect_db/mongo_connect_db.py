@@ -1,6 +1,6 @@
 import os
 import pymongo
-import loguru
+from loguru import logger
 
 
 from spiritualdata_utils import init_logger
@@ -10,7 +10,7 @@ init_logger()
 # Define a cache to store database connections
 db_cache = {}
 
-def connect_db(
+def mongo_connect_db(
     uri: str = os.getenv("MONGOURI", None),
     database_name: str = None,
     refresh: bool = False,
@@ -34,10 +34,13 @@ def connect_db(
     """
     # Check if the database connection is cached
     if not refresh and uri in db_cache:
+        logger.info("Using cached database connection")
         return db_cache[uri]
 
     try:
         # Create a new MongoDB client object with the given URI
+        logger.info("Connecting to MongoDB...")
+
         client = pymongo.MongoClient(uri)
 
         # Select the database
@@ -48,4 +51,5 @@ def connect_db(
 
         return db
     except Exception as e:
-        loguru.exception(e)
+        logger.exception(e)
+        return None
