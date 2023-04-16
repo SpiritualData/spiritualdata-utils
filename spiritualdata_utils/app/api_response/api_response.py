@@ -1,16 +1,18 @@
 def api_response(data: any = None, message: str = None):
     """
-    This function is used to create a standard API response for the entire codebase
-    In this format, the benefit is:
-        1. Developer only needs to send data/message, api_response will be handling all response level actions
+    Function to create a standard API response for the entire codebase.
 
-    Parameters
-    ----------
-    data : any
-        What data to send back to the frontend.
-    message : str
-        What message to send back to the frontend when it fails
+    Args:
+        data (Any): Data to send back to the frontend.
+        message (str): Message to send back to the frontend when an error occurs.
+
+    Returns:
+        dict: A dictionary containing the API response.
+        
+    Benefits:
+        * Developers only need to send the data/message, as the `api_response` function handles all response level actions.
     """
+
 
     if data:
         return {"success": True, "data": data}

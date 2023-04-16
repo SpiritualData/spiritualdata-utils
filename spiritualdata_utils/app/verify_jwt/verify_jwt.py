@@ -10,20 +10,23 @@ oauth2_scheme = HTTPBearer()
 
 
 class verify_jwt(object):
+    """
+    Class for verifying JWT tokens.
+
+    Notes:
+        * This is a class because functions cannot handle parameters with a function for dependency injection.
+    """
+
     def verify_jwt_func(self, jwt_token=Depends(oauth2_scheme)):
         """
-                The function to verify JWT tokens.
-                This had to be a class as functions cannot handle parameters with a function for dependency injection
+        Verify if the JWT token is valid or not.
 
-                Parameters
-                ----------
-                jwt_token : str
-                    Check if the jwt token is valid or not
-        ƒ
-                Returns
-                -------
-                jwt_token : str
-                    Decoded jwt token
+        Args:
+            jwt_token (str): The JWT token to verify.
+
+        Returns:
+            str: The decoded JWT token.
+
         """
         try:
             if type(jwt_token) != str:

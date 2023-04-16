@@ -13,25 +13,17 @@ def arango_connect_db(
     password: str = os.getenv("PASSWORD", None),
 ):
     """
-    This function connects to the ArangoDB database.
+    Connects to the ArangoDB database.
 
-    Parameters
-    ----------
-    host : str, optional
-        The host string where Arangodb is hosted, by default "localhost"
-    port : int, optional
-        The port at which Arangodb is running on, by default 8529
-    database_name : str
-        The database, by default None
-    username : str, optional
-        The username of the user who will be using the db, by default os.getenv("USERNAME", None)
-    password : str, optional
-        The, by default os.getenv("PASSWORD", None)
+    Args:
+        host (str, optional): The host string where Arangodb is hosted. Default is "localhost".
+        port (int, optional): The port at which Arangodb is running on. Default is 8529.
+        database_name (str): The database.
+        username (str, optional): The username of the user who will be using the db. Default is os.getenv("USERNAME", None).
+        password (str, optional): The password. Default is os.getenv("PASSWORD", None).
 
-    Returns
-    -------
-    db
-        The arangodb database object
+    Returns:
+        Database: The ArangoDB database object.
     """
     try:
         # Create a new ArangoDB client object

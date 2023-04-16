@@ -14,27 +14,18 @@ def mongo_query_db(
     projection: dict = None,
 ):
     """
-    The function to run various mongo queries for the spiritual_data codebase
+    Runs various MongoDB queries for the spiritual_data codebase.
 
-    Parameters
-    ----------
-    mongo_object : MongoClient
-        Mongo object that the queries need to run on, a db connection
-    query_type : str
-        Choices from find, find_one, insert, insert_one, update, update_one
-    query : dict, optional
-        The query to be run, by default None
-    to_insert : dict, optional
-        If something is to be inserted or updated, by default None
-    collection : str
-        the collection to query on, by default None
-    projection : dict, optional
-        The projection to apply to the query, by default None
+    Args:
+        mongo_object (MongoClient): The MongoDB client object.
+        query_type (str): The type of query to run. Choices are: find, find_one, insert, insert_one, update, update_one.
+        collection (str): The collection to query on.
+        query (dict, optional): The query to be run. Default is None.
+        to_insert (dict, optional): If something is to be inserted or updated. Default is None.
+        projection (dict, optional): The projection to apply to the query. Default is None.
 
-    Returns
-    -------
-    result : dict or None
-        The result of the query
+    Returns:
+        dict or None: The result of the query.
     """
     logger.debug(
         f"Running mongo_query_db with query_type: {query_type}, query: {query}, to_insert: {to_insert}, collection: {collection}, and projection: {projection}"
@@ -43,7 +34,7 @@ def mongo_query_db(
         raise ValueError("Collection name is required")
 
     if query_type == "find":
-        if projection == None: 
+        if projection == None:
             projection = {"_id": 0}
         else:
             projection = {"_id": 0, **projection}
@@ -54,7 +45,7 @@ def mongo_query_db(
         return [r for r in result]
 
     elif query_type == "find_one":
-        if projection == None: 
+        if projection == None:
             projection = {"_id": 0}
         else:
             projection = {"_id": 0, **projection}

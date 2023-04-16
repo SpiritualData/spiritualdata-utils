@@ -10,27 +10,22 @@ init_logger()
 # Define a cache to store database connections
 db_cache = {}
 
+
 def mongo_connect_db(
     uri: str = os.getenv("MONGOURI", None),
     database_name: str = None,
     refresh: bool = False,
 ):
     """
-    This function connects to the MongoDB database using a connection URI.
+    Connects to the MongoDB database using a connection URI.
 
-    Parameters
-    ----------
-    uri : str
-        The MongoDB connection URI
-    database_name : str
-        The name of the database to connect to
-    refresh : bool
-        Whether to force a new database connection, by default False
+    Args:
+        uri (str): The MongoDB connection URI.
+        database_name (str): The name of the database to connect to.
+        refresh (bool, optional): Whether to force a new database connection. Default is False.
 
-    Returns
-    -------
-    db
-        The MongoDB database object
+    Returns:
+        Database: The MongoDB database object.
     """
     # Check if the database connection is cached
     if not refresh and uri in db_cache:

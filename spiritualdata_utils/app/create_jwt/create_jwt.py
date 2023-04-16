@@ -7,18 +7,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 def create_jwt(data):
     """
-    The function to issue a JWT
+    Function to issue a JWT.
 
-    Parameters
-    ----------
-    data : dict
-        Payload to store in JWT
+    Args:
+        data (dict): Payload to store in the JWT.
 
-    Returns
-    -------
-    string
-        jwt_token that is returned for the data.
+    Returns:
+        str: JWT token that is returned for the data.
     """
+
     try:
         logger.info(f"Encoding the payload: {data}")
         token = jwt.encode(data, SECRET_KEY)

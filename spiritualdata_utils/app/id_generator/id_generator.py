@@ -6,18 +6,18 @@ init_logger()
 
 def id_generator(append: str = ''):
     """
-    The function to generate a unique id
-    Length of each id is 10 characters + append string
+    Function to generate a unique ID.
 
-    Characters can be: 
-        1. Digits 
-        2. Lower and Upper case letters
-        3. Special Characters: @!$
+    Args:
+        append (str, optional): The string to append in front of the ID to make it recognizable. Default is ''.
 
-    Parameters
-    ----------
-    append : str, optional
-        The string to append in front of the id to make it recognizable, by default ''
+    Returns:
+        str: A unique ID with a length of 10 characters + the length of the append string.
+
+    Character set:
+        * Digits (0-9)
+        * Lowercase and uppercase letters (a-z, A-Z)
+        * Special characters (@, !, $)
     """
     try:
         id_length = 10
