@@ -78,9 +78,7 @@ def mongo_query_db(
         return result
 
     elif query_type == "update_one":
-        result = mongo_object[collection].update_one(
-            query, to_insert, upsert=True
-        )
+        result = mongo_object[collection].update_one(query, to_insert, upsert=True)
         logger.debug(
             f"Mongo query {query_type} on collection {collection} with query: {query} and to_insert: {to_insert}"
         )

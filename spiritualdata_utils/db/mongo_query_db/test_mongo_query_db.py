@@ -2,7 +2,7 @@ import pytest
 from pymongo import MongoClient
 from spiritualdata_utils import init_logger
 from spiritualdata_utils import mongo_connect_db, mongo_query_db
-import os 
+import os
 
 
 @pytest.fixture(scope="module")
@@ -73,7 +73,7 @@ def test_update_data(db):
         mongo_object=db,
         query_type="find_one",
         query={"name": "Jane Doe"},
-        projection = {'_id': 0},
+        projection={"_id": 0},
         collection=collection_name,
     )
     assert found_data == updated_data
