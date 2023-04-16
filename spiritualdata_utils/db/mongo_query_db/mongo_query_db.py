@@ -43,6 +43,10 @@ def mongo_query_db(
         raise ValueError("Collection name is required")
 
     if query_type == "find":
+        if projection == None: 
+            projection = {"_id": 0}
+        else:
+            projection = {"_id": 0, **projection}
         result = mongo_object[collection].find(query, projection)
         logger.debug(
             f"Mongo query {query_type} on collection {collection} with query: {query} and projection: {projection}"
@@ -50,9 +54,13 @@ def mongo_query_db(
         return [r for r in result]
 
     elif query_type == "find_one":
+        if projection == None: 
+            projection = {"_id": 0}
+        else:
+            projection = {"_id": 0, **projection}
         result = mongo_object[collection].find_one(query, projection)
         logger.debug(
-            f"Mongo query {query_type} on collection {collection} with query: {query} and projection: {projection}"
+            f"Mongo query {query_type} on collection {collection} with query: {query} and projection: {projection}, result: {result}"
         )
         return result
 
