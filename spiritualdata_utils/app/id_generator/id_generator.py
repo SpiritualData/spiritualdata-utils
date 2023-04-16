@@ -21,7 +21,7 @@ def id_generator(append: str = ''):
     """
     try:
         id_length = 10
-        characters = string.ascii_letters + string.digits + '@!$%&?'
+        characters = string.ascii_letters + string.digits + '@!$'
         generated_id = ''.join(random.choice(characters) for i in range(id_length))
         final_id = append + generated_id
         return final_id
