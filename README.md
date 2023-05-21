@@ -4,6 +4,7 @@ While this repository only supports Python interfaces currently, implementations
 
 ## Installation
 `pip install -e .`  
+If `pip install` doesn't work, use `python setup.py develop`
 Remove -e for production or if you won't be making any changes to the repository code.
 
 Add the following to your .bashrc file or script for initializing your Python virtual environment:  
