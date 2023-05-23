@@ -51,7 +51,7 @@ if extras_require:
 # are installed.
 # https://packaging.python.org/guides/single-sourcing-package-version/
 meta = {}
-exec(read("package_name/__meta__.py"), meta)
+exec(read("spiritualdata_utils/__meta__.py"), meta)
 
 
 # Import the README and use it as the long-description.
@@ -160,7 +160,7 @@ def impstall(package):
       mod = imp(package)
     return mod
 
-impstall('rc-repo-utils')
+# impstall('rc-repo-utils')
 from repo_utils import enable_installing_dependencies, get_repository_path
 # Add init file for every definition. This is necessary when installing for production,
 #   and not necessary when installing in development mode with -e (pip install -e .).
