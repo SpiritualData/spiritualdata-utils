@@ -29,12 +29,12 @@ def mongo_connect_db(
     """
     # Check if the database connection is cached
     if not refresh and uri in db_cache:
-        logger.info("Using cached database connection")
+        logger.debug("Using cached database connection")
         return db_cache[uri]
 
     try:
         # Create a new MongoDB client object with the given URI
-        logger.info("Connecting to MongoDB...")
+        logger.debug("Connecting to MongoDB...")
 
         client = pymongo.MongoClient(uri)
 

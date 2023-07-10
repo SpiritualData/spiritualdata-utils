@@ -1,11 +1,13 @@
 from loguru import logger
+import os
+import sys
 
 
 init_loggers = {"logger": None}
 
 
 def init_logger(
-    log_file="/logs/spiritual_data_utils.log", console_level="INFO", file_level="DEBUG"
+    log_file=os.path.join(os.environ.get("LOG_DIR"),"spiritual_data_utils.log"), console_level="INFO", file_level="DEBUG"
 ):
     """
     Initializes a logger with a file sink.
@@ -34,6 +36,13 @@ def init_logger(
         level=file_level,
         rotation="500 MB",
         enqueue=True,
+        format="<green>{time:DD-MM-YYYY HH:mm:ss}</green>| {file.name} | Function: {function} | Line: {line} | <level>{level}</level> | <cyan>{message}</cyan>\n",
+        colorize=True,
+    )
+    # Add a new sink that logs messages to the console
+    logger.add(
+        sys.stderr, 
+        level=console_level,
         format="<green>{time:DD-MM-YYYY HH:mm:ss}</green>| {file.name} | Function: {function} | Line: {line} | <level>{level}</level> | <cyan>{message}</cyan>\n",
         colorize=True,
     )
