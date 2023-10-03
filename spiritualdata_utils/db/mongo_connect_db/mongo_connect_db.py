@@ -28,9 +28,9 @@ def mongo_connect_db(
         Database: The MongoDB database object.
     """
     # Check if the database connection is cached
-    if not refresh and uri in db_cache:
-        logger.debug("Using cached database connection")
-        return db_cache[uri]
+    key = f"{uri}/{database_name}"
+    if not refresh and key in db_cache:
+        return db_cache[key]
 
     try:
         # Create a new MongoDB client object with the given URI
@@ -42,7 +42,7 @@ def mongo_connect_db(
         db = client[database_name]
 
         # Cache the database connection
-        db_cache[uri] = db
+        db_cache[key] = db
 
         return db
     except Exception as e:
